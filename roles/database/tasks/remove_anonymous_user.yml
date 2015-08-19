@@ -1,0 +1,7 @@
+---
+
+  - name: removes the anonymous user from mysql database
+    shell: mysql -u root -e "DELETE FROM mysql.user WHERE user=''; FLUSH PRIVILEGES"
+    sudo: no
+    register: mysql_command
+    failed_when: mysql_command.rc != 0

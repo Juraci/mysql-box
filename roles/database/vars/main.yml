@@ -1,0 +1,3 @@
+home_directory: "/home/vagrant"
+dump_file_name: "mysqldump.sql"
+database_name: "sandbox"

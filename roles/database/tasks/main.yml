@@ -2,3 +2,5 @@
 
   - include: dependencies.yml
   - include: external_connection.yml
+  - include: remove_anonymous_user.yml
+  - include: restore_dump.yml
