@@ -1,0 +1,4 @@
+---
+
+  - name: Ensure the file that allows external connection is present
+    copy: src=allow_external.cnf dest=/etc/mysql/conf.d/allow_external.cnf
