@@ -5,3 +5,20 @@
 
   - name: restarts mysql service
     service: name=mysql state=restarted
+
+  - name: ensures that the {{ database_name }} exists
+    mysql_db: name={{ database_name }} state=present
+
+  - name: remote user
+    shell: mysql -u root -e "SELECT user FROM mysql.user"
+    register: check_user
+    changed_when:  "'{{remote_user}}' not in check_user.stdout"
+    failed_when: check_user.rc != 0
+    sudo: no
+
+  - name: create remote user
+    shell: mysql -u root -e "GRANT ALL PRIVILEGES ON {{database_name}}.* TO '{{remote_user}}'@'%' IDENTIFIED BY '{{remote_user_password}}';"
+    register: remote_user
+    failed_when: remote_user.rc != 0
+    when: check_user|changed
+    sudo: no

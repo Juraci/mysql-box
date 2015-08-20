@@ -2,9 +2,8 @@
 
   - name: ensures the dump file is present in the home directory
     copy: src={{ dump_file_name  }} dest={{ home_directory }}/{{ dump_file_name }}
+    register: dump_file
 
-  - name: ensures that the {{ database_name }} exists
-    mysql_db: name={{ database_name }} state=present
-
-  - name: ensures the dum was imporeted
+  - name: ensures the dump file is imporeted
     mysql_db: name={{ database_name }} state=import target={{ home_directory }}/{{ dump_file_name }}
+    when: dump_file|changed

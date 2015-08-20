@@ -1,3 +1,5 @@
 home_directory: "/home/vagrant"
 dump_file_name: "mysqldump.sql"
 database_name: "sandbox"
+remote_user: "dashboard"
+remote_user_password: "password"
