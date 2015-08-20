@@ -44,4 +44,4 @@ if [ $? -ne 0 ]; then
   printf "${green} looks like you don't have Bundler available \n it's optional, but without it you will not be able to run 'rake specs'\n follow this instructions if you want it http://bundler.io/#getting-started \n"
 fi
 
-printf "${green} looks like you are good to go, just a few more steps: \n 1. check the variables inside roles/database/vars/main.yml \n 2. add your own mysql dump file (.slq) inside roles/database/files/ \n 3. run 'vagrant up db'"
+printf "${green} looks like you are good to go, just a few more steps: \n 1. check the variables inside roles/database/vars/main.yml \n 2. add your own mysql dump file (.sql) inside roles/database/files/ \n 3. run 'vagrant up db'"
