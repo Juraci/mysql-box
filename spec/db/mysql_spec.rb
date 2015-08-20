@@ -12,4 +12,8 @@ describe 'check mysql remote user setup' do
   describe command('mysql -u root -e "SELECT host FROM mysql.user WHERE user=\'dashboard\'"') do
     its(:stdout) { should match /\%/ }
   end
+
+  describe port(3306) do
+    it { should be_listening  }
+  end
 end
