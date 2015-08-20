@@ -4,6 +4,6 @@
     copy: src={{ dump_file_name  }} dest={{ home_directory }}/{{ dump_file_name }}
     register: dump_file
 
-  - name: ensures the dump file is imporeted
+  - name: ensures the dump file is imported
     mysql_db: name={{ database_name }} state=import target={{ home_directory }}/{{ dump_file_name }}
     when: dump_file|changed
