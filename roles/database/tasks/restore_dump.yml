@@ -1,9 +1,11 @@
 ---
 
   - name: ensures the dump file is present in the home directory
-    copy: src={{ dump_file_name  }} dest={{ home_directory }}/{{ dump_file_name }}
+    copy: src={{ item.file  }} dest={{ home_directory }}/{{ item.file }}
     register: dump_file
+    with_items: "{{ mysql }}"
 
   - name: ensures the dump file is imported
-    mysql_db: name={{ database_name }} state=import target={{ home_directory }}/{{ dump_file_name }}
+    mysql_db: name={{ item.name }} state=import target={{ home_directory }}/{{ item.file }}
     when: dump_file|changed
+    with_items: "{{ mysql }}"

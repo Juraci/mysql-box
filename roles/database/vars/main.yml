@@ -1,5 +1,10 @@
 home_directory: "/home/vagrant"
-dump_file_name: "mysqldump.sql"
-database_name: "sandbox"
 remote_user: "dashboard"
 remote_user_password: "password"
+mysql:
+  - env: test
+    name: 'sandbox_test'
+    file: 'schema.sql'
+  - env: prod
+    name: 'sandbox'
+    file: 'mysqldump.sql'

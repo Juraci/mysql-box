@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe command('mysql -u root -e "SHOW DATABASES"') do
-  its(:stdout) { should contain('sandbox') }
+  its(:stdout) { should contain('sandbox_test') }
 end
 
 describe 'check mysql remote user setup' do

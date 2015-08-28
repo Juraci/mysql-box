@@ -6,8 +6,9 @@
   - name: restarts mysql service
     service: name=mysql state=restarted
 
-  - name: ensures that the {{ database_name }} exists
-    mysql_db: name={{ database_name }} state=present
+  - name: ensures that the {{ item.name }} exists
+    mysql_db: name={{ item.name }} state=present
+    with_items: "{{ mysql }}"
 
   - name: remote user
     shell: mysql -u root -e "SELECT user FROM mysql.user"
@@ -17,8 +18,9 @@
     sudo: no
 
   - name: create remote user
-    shell: mysql -u root -e "GRANT ALL PRIVILEGES ON {{database_name}}.* TO '{{remote_user}}'@'%' IDENTIFIED BY '{{remote_user_password}}';"
+    shell: mysql -u root -e "GRANT ALL PRIVILEGES ON {{item.name}}.* TO '{{remote_user}}'@'%' IDENTIFIED BY '{{remote_user_password}}';"
     register: remote_user
     failed_when: remote_user.rc != 0
     when: check_user|changed
     sudo: no
+    with_items: "{{ mysql }}"
