@@ -4,8 +4,8 @@
 
 A [vagrant](http://docs.vagrantup.com/v2/why-vagrant/index.html) box that after provisioned will provide you with the following:
 
-- a mysql-server that allows remote connections to a [specific database](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L3) for a [specific user](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L4-L5)
-- it will create the database from a mysql [dump file](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L2) (*.sql) specified by you
+- a mysql-server that allows remote connections to [specific databases](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L6) for a [specific user](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L2)
+- it will create the database from a mysql [dump file](https://github.com/Juraci/mysql-box/blob/master/roles/database/vars/main.yml#L7) (*.sql) specified by you
 
 ### How?
 
